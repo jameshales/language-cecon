@@ -1,5 +1,5 @@
 {
-  "foo": "bar",
-  "baz": [1, 2, 3],
-  "AAA": "Foo"
+  "id": "1",
+  "keys": "Cloud, Cloud Strife, soldier, Avalanche",
+  "entry": "Cloud:[GENDER<Cloud>:Male;APPEARANCE<Cloud>:173cm/21yo/blonde]"
 }

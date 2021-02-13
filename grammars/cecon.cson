@@ -1,5 +1,5 @@
-'scopeName': 'source.json'
-'name': 'JSON'
+'scopeName': 'source.cecon'
+'name': 'CECON'
 'fileTypes': [
   'cecon'
 ]
@@ -51,6 +51,40 @@
         'name': 'punctuation.definition.dictionary.end.json'
     'name': 'meta.structure.dictionary.json'
     'patterns': [
+      {
+        'begin': '("entry")[\\s\\n]*:[\\s\\n](")'
+        'beginCaptures':
+          '1':
+            'name': 'string.quoted.double.json'
+          '2':
+            'name': 'punctuation.definition.string.begin.json'
+        'end': '(")(,)(?=[\\s\\n]*})|(,)|(?=})'
+        'endCaptures':
+          '1':
+            'name': 'punctuation.definition.string.end.json'
+          '2':
+            'name': 'invalid.illegal.trailing-dictionary-separator.json'
+          '3':
+            'name': 'punctuation.separator.dictionary.pair.json'
+        'contentName': 'string.quoted.double.catnip'
+        'patterns': [
+          # Matches strings that are Capitalised
+          {
+            'match': '\\b[A-Z][a-z0-9]+\\b'
+            'name': 'string.quoted.other.capitalised'
+          }
+          # Matches strings that are ALLCAPS
+          {
+            'match': '\\b[A-Z]+\\b'
+            'name': 'string.quoted.other.allcaps'
+          }
+          # Matches strings that are uncapitalised
+          {
+            'match': '\\b[a-z0-9]+\\b'
+            'name': 'string.quoted.other.uncapitalised'
+          }
+        ]
+      }
       {
         # the key
         'begin': '(?=")'
@@ -115,21 +149,6 @@
       {
         'match': '\\\\.'
         'name': 'invalid.illegal.unrecognized-string-escape.json'
-      }
-      # Matches strings that are Capitalised
-      {
-        'match': '[A-Z][a-z]+'
-        'name': 'string.quoted.other.capitalised'
-      }
-      # Matches strings that are ALLCAPS
-      {
-        'match': '[A-Z]+'
-        'name': 'string.quoted.other.allcaps'
-      }
-      # Matches strings that are uncapitalised
-      {
-        'match': '[a-z]+'
-        'name': 'string.quoted.other.uncapitalised'
       }
     ]
   'value':
